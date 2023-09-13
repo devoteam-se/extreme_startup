@@ -6,26 +6,7 @@ NB don't show the players the code for this project until after the workshop as 
 
 Getting started
 ---------------
-The simplest way to get Extreme Startup running is to run in Docker.
-
-```shell script
-# The first time
-docker build -t extreme_startup .         # ./build.sh
-docker run -d -p 80:3000 extreme_startup  # ./run.sh
-```
-and for warmup round
-```shell script
-docker run -d -p 80:3000 -e WARMUP=1 extreme_startup   # ./warmup.sh
-```
-
-You can even run the tests in Docker if you are making changes to the code
-```shell script
-docker run --rm -it --entrypoint=rake extreme_startup   # ./test.sh
-```
-
-For more information on How to manage docker read [Docker docs](https://docs.docker.com/get-started/overview/)
-
-See bottom for how to run this native (the hard way/the Rubyist way).
+TODO
 
 Notes for facilitators
 ----------------------
@@ -34,11 +15,7 @@ Notes for facilitators
 * Everyone needs a computer connected to the same network, so that they can communicate. Check that everyone can see the leaderboard page served by the webapp running on your machine. Depending on the situation, we have used a local/ad-hoc network and that is ok for the game.
 * We have had trouble with things like firewalls, especially on some Windows laptops, so if there are problems, make sure you can ping clients from the server and vice versa.
 
-* Warmup round: run the web server with the `WARMUP` environment variable set (note that the result of running with `WARMUP=0` is undefined):
-
-```shell script
-WARMUP=1 ruby web_server.rb  # or ./warmup.sh
-````
+* Warmup round: TODO
 
 * In the warmup round, just make sure that everyone has something technologically working, you just get the same request repeatedly. @bodil has provided some [nice sample players in different languages](https://github.com/steria/extreme_startup_servers).
 
@@ -47,9 +24,6 @@ WARMUP=1 ruby web_server.rb  # or ./warmup.sh
 * In case you want to 'stop the world' and reflect with the players
   during the game, you can use the "Pause Game" button in /controlpanel.
 * Set a time limit so you know when to stop the game, declare the winner, and retrospect.
-
-
--- Robert Chatley and Matt Wynne 2011.
 
 People Who've Run Extreme Startup Sessions
 ------------------------------------------
@@ -62,43 +36,3 @@ People Who've Run Extreme Startup Sessions
 
 If you run this workshop, please write it up on the internet and send us a link to add to this list.
 
-
-Running "natively" (without Docker)
------------------------------------
-
-If you want to run the workshop without Docker you need to get this running (not tested in a few years):
-
-* Install Ruby 1.9.3 and rubygems
-* (For Windows)
-  * Install [Ruby DevKit](http://rubyinstaller.org/downloads/)
-  * Extract to (e.g.) c:\devkit
-  * cd c:\devkit
-  * ruby dk.rb init
-  * Edit the file config.yml (Add the locations where ruby is installed e.g. c:\Ruby193)
-  * ruby dk.rb install
-* (For Ubuntu 12.04 onwards)   
-  * Remove existing installation of Ruby and ruby related packages (do not use sudo or Ubuntu Software centre or any other Ubuntu package manager to install Ruby or any of its components)
-  * Remove rvm and related package from Ubuntu
-  * Install RVM using the instructions on https://rvm.io/
-  * In case RVM is broken it can be fixed by going to http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395 
-  * Install Ruby and Rubygems using RVM only (for Rubygems use: 'rvm rubygems current' or 'rvm rubygems latest')
-  * See [Installing Nokogiri](http://nokogiri.org/tutorials/installing_nokogiri.html) for installing requirement
-    * sudo apt-get install libxslt-dev libxml2-dev
-* (For Mac (Xcode 5.1 onwards))
-  * In the install instructions below you may need to supply an additional argument to ensure that Xcode does not treat an incorrect command line argument as a fatal error when installing Nokogiri.
-  * The argument is: `ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future` and can be prepended to the install commands.
-  * Read more here: https://developer.apple.com/library/ios/releasenotes/DeveloperTools/RN-Xcode/Introduction/Introduction.html
-
-* Install dependencies:
-
-````
-cd ../<extreme startup dir>
-gem install bundler
-bundle install
-````
-
-* Start the game server
-
-````
-bundle exec ruby web_server.rb
-````
