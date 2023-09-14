@@ -1,4 +1,1 @@
-.bundle
-*.swp
-.project
-.buildpath
+node_modules

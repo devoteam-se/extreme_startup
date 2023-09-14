@@ -6,7 +6,10 @@ NB don't show the players the code for this project until after the workshop as 
 
 Getting started
 ---------------
-TODO
+
+1. Install [bun](https://bun.sh/docs/installation)
+2. `bun install && bun run dev`
+3. Open `open http://localhost:3000`
 
 Notes for facilitators
 ----------------------
