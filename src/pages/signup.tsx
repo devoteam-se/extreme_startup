@@ -3,7 +3,7 @@ import { Layout } from '../components/Layout';
 export const Signup = () => {
   return (
     <Layout>
-      <form action="/users">
+      <form action="/users/add">
         <label for="name">name</label>
         <input type="text" name="name"  required />
         <br />
